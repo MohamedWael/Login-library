@@ -17,13 +17,24 @@
         android:orientation="vertical"
         tools:context=".verificationcodelogin.verification.VerificationLoginFragment">
 
+
         <TextView
-            android:id="@+id/tvSMSVVerificationDescription"
+            android:id="@+id/tvSMSVVerificationTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/verification_title_margin_top"
             android:text="@{viewModel.verificationTitle}"
-            tools:text="@string/please_enter_the_code_to_verify_the_account" />
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            tools:text="@string/verification_title" />
+
+        <TextView
+            android:id="@+id/tvSMSVVerificationDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/verification_description_margin_top"
+            android:text="@{viewModel.verificationDescription}"
+            tools:text="@string/verification_description" />
 
         <com.alimuzaffar.lib.pin.PinEntryEditText
             android:id="@+id/txtPinEntry"

@@ -7,10 +7,8 @@ import com.github.mohamedwael.login.config.InputValidationProvider
 import com.github.mohamedwael.login.forgetpassword.ForgetPasswordViewModelFactory
 import com.github.mohamedwael.login.signup.SignUpViewModelFactory
 
-abstract class UsernameValidationBaseViewModel(inputValidationProvider: InputValidationProvider) :
-    BaseLoginViewModel(inputValidationProvider) {
-    open val userName = MutableLiveData<String>()
-    open val userNameError = MutableLiveData<Int?>()
+abstract class LoginScenarioBaseViewModel(inputValidationProvider: InputValidationProvider) :
+    UsernameBaseViewModel(inputValidationProvider) {
 
     open val signUpButtonVisibility =
         ObservableInt(if (SignUpViewModelFactory.isInitialized()) View.VISIBLE else View.GONE)
@@ -18,9 +16,6 @@ abstract class UsernameValidationBaseViewModel(inputValidationProvider: InputVal
         ObservableInt(if (ForgetPasswordViewModelFactory.isInitialized()) View.VISIBLE else View.GONE)
     open var onSignUpClick: (() -> Unit)? = null
     open var onForgetPasswordClick: (() -> Unit)? = null
-
-    open fun isUsernameValid() = inputValidationProvider.isEmailValid(userName.value)
-            || inputValidationProvider.isUsernameValid(userName.value)
 
     abstract fun onLoginClick()
 }

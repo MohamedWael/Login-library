@@ -4,7 +4,7 @@ import android.view.View
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import com.github.mohamedwael.login.R
-import com.github.mohamedwael.login.base.UsernameValidationBaseViewModel
+import com.github.mohamedwael.login.base.LoginScenarioBaseViewModel
 import com.github.mohamedwael.login.config.InputValidationProvider
 import com.github.mohamedwael.login.verificationcodelogin.usernamevalidation.UsernameValidationViewModelFactory
 
@@ -12,7 +12,7 @@ import com.github.mohamedwael.login.verificationcodelogin.usernamevalidation.Use
 open class PasswordLoginViewModel(
     inputValidationProvider: InputValidationProvider,
     private val passwordLogin: PasswordLogin
-) : UsernameValidationBaseViewModel(inputValidationProvider) {
+) : LoginScenarioBaseViewModel(inputValidationProvider) {
 
     val password = MutableLiveData<String>()
     val passwordError = MutableLiveData<Int?>()

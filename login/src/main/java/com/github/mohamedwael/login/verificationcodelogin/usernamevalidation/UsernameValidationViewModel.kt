@@ -1,13 +1,13 @@
 package com.github.mohamedwael.login.verificationcodelogin.usernamevalidation
 
 import com.github.mohamedwael.login.R
-import com.github.mohamedwael.login.base.UsernameValidationBaseViewModel
+import com.github.mohamedwael.login.base.LoginScenarioBaseViewModel
 import com.github.mohamedwael.login.config.InputValidationProvider
 
 class UsernameValidationViewModel(
     private val verificationProvider: VerificationProvider,
     inputValidationProvider: InputValidationProvider
-) : UsernameValidationBaseViewModel(inputValidationProvider) {
+) : LoginScenarioBaseViewModel(inputValidationProvider) {
 
     lateinit var onVerificationCodeSent: (username: String) -> Unit
     override fun onLoginClick() {

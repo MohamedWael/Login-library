@@ -23,7 +23,8 @@ class VerificationLoginViewModel(
     val resendButtonVisibility = ObservableBoolean(verificationConfig.isSendFirst)
     val isTimerClickable = ObservableBoolean(verificationConfig.onTimerClick != null)
     val pinCodeMaxLength = ObservableInt(verificationConfig.pinCodeMaxLength)
-    val verificationTitle = ObservableInt(R.string.please_enter_the_code_to_verify_the_account)
+    val verificationTitle = ObservableInt(R.string.verification_title)
+    val verificationDescription = ObservableInt(R.string.verification_description)
     var remainingTime = verificationConfig.countDownTimeSecond.absoluteValue
     val verificationCounterText = MutableLiveData("0")
     val pinCodeListener = PinEntryEditText.OnPinEnteredListener {
