@@ -66,8 +66,4 @@ class MainActivity : AppCompatActivity() {
             PasswordLoginImpl()
         )
     }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
 }

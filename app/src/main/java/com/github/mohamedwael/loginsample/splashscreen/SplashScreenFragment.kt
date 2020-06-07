@@ -32,7 +32,8 @@ class SplashScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Handler().postDelayed({
             Navigation.findNavController(view)
-                .navigate(R.id.action_splashScreenFragment_to_login_nave_grapg)
+//                .navigate(R.id.action_splashScreenFragment_to_code_login_nav_graph)
+                .navigate(R.id.action_splashScreenFragment_to_password_login_nav_graph)
         }, 3000)
     }
 
