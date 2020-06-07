@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="mainActionColor">#6200EE</color>
+	<color name="secondaryActionColor">#3700B3</color>
+	<color name="mainBackgroundColor">@color/white</color>
+	<color name="mainTextColor">#4A1717</color>
+	<color name="hintTextColor">#AEABAB</color>
+	<color name="white">#FFFFFF</color>
+	<color name="black">#000000</color>
+	<color name="transparent">#00FFFFFF</color>
+
+</resources>

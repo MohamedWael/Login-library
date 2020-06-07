@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        style="@style/LoginLayout"
+        android:orientation="vertical"
+        tools:context=".signup.SignUpFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUsername"
+            style="@style/TextInputLayout"
+            android:layout_marginTop="@dimen/password_login_margin_top"
+            app:hintTextAppearance="@style/EditTextHintTextSize">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                style="@style/LoginInputField"
+                android:hint="@string/user_name"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:text="@={viewModel.username}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPassword"
+            style="@style/PasswordTextInputLayout"
+            android:layout_marginTop="@dimen/password_login_margin_top"
+            app:hintTextAppearance="@style/EditTextHintTextSize">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                style="@style/PasswordLoginInputField"
+                android:autofillHints="password"
+                android:hint="@string/password"
+                android:imeOptions="actionNext"
+                android:text="@={viewModel.password}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btnSignUp"
+            style="@style/LoginButton"
+            android:layout_marginTop="50dp"
+            android:onClick="@{(v)-> viewModel.onSignUpClick()}"
+            android:text="@string/sign_up" />
+
+    </LinearLayout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.github.mohamedwael.login.signup.SignUpViewModel" />
+    </data>
+</layout>

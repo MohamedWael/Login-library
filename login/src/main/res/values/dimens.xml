@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="verification_title_margin_top">20dp</dimen>
+    <dimen name="txtPinEntry_margin_top">20dp</dimen>
+    <dimen name="btnRemainingTime_margin_top">50dp</dimen>
+    <dimen name="login_layout_margin">5dp</dimen>
+    <dimen name="login_view_side_margin">25dp</dimen>
+    <dimen name="sms_code_validation_input_text_size">25sp</dimen>
+    <dimen name="login_input_field_text_size">16sp</dimen>
+    <dimen name="login_title_text_size">16sp</dimen>
+    <dimen name="login_input_field_hint_text_size">14sp</dimen>
+    <dimen name="password_login_margin_top">20dp</dimen>
+    <dimen name="forget_password_button_padding">10dp</dimen>
+    <dimen name="create_password_margin_top">20dp</dimen>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.github.mohamedwael.login.verificationcodelogin.verification.VerificationLoginViewModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/LoginLayout"
+        android:orientation="vertical"
+        tools:context=".verificationcodelogin.verification.VerificationLoginFragment">
+
+        <TextView
+            android:id="@+id/tvSMSVVerificationDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/verification_title_margin_top"
+            android:text="@{viewModel.verificationTitle}"
+            tools:text="@string/please_enter_the_code_to_verify_the_account" />
+
+        <com.alimuzaffar.lib.pin.PinEntryEditText
+            android:id="@+id/txtPinEntry"
+            style="@style/LoginInputField"
+            android:layout_marginTop="@dimen/txtPinEntry_margin_top"
+            android:cursorVisible="true"
+            android:digits="1234567890"
+            android:inputType="number"
+            android:layoutDirection="locale"
+            android:maxLength="@{viewModel.pinCodeMaxLength}"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/sms_code_validation_input_text_size"
+            app:onPinEnteredListener="@{viewModel.pinCodeListener}"
+            app:pinAnimationType="popIn"
+            app:pinLineColors="@color/colorAccent"
+            app:pinLineStroke="1dp"
+            app:pinLineStrokeSelected="2dp"
+            app:pinTextBottomPadding="5dp" />
+
+        <Button
+            android:id="@+id/btnRemainingTime"
+            style="@style/BorderedButton"
+            android:layout_marginTop="@dimen/btnRemainingTime_margin_top"
+            android:enabled="@{viewModel.isTimerClickable}"
+            android:onClick="@{(v)-> viewModel.onTimerClick.invoke()}"
+            android:visibility="@{viewModel.resendButtonVisibility? View.GONE : View.VISIBLE}"
+            app:updateTimer="@{viewModel.verificationCounterText}"
+            tools:text="Remaining 00:49" />
+
+        <Button
+            android:id="@+id/btnSendCode"
+            style="@style/LoginButton"
+            android:layout_marginTop="@dimen/btnRemainingTime_margin_top"
+            android:onClick="@{(v)-> viewModel.onSendClick.invoke()}"
+            android:text="@string/resend"
+            android:visibility="@{viewModel.resendButtonVisibility? View.VISIBLE : View.GONE}" />
+
+    </LinearLayout>
+</layout>

@@ -1,2 +1,3 @@
+include ':login'
 include ':app'
 rootProject.name = "Login project"
