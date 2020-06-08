@@ -6,7 +6,7 @@ import com.github.mohamedwael.login.config.InputValidationProvider
 
 object VerificationLoginViewModelFactory : BaseLoginViewModelFactory() {
 
-    lateinit var verificationConfig: VerificationConfig
+    private lateinit var verificationConfig: VerificationConfig
     fun inject(
         verificationConfig: VerificationConfig,
         inputValidationProvider: InputValidationProvider

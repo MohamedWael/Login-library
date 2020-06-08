@@ -39,7 +39,7 @@ object PasswordLoginViewModelFactory : BaseLoginViewModelFactory() {
 
     lateinit var passwordLogin: PasswordLogin
 
-    fun inject(inputValidationProvider: InputValidationProvider, passwordLogin: PasswordLogin) {
+    fun inject(passwordLogin: PasswordLogin, inputValidationProvider: InputValidationProvider) {
         injectInputValidationProvider(inputValidationProvider)
         this.passwordLogin = passwordLogin
     }

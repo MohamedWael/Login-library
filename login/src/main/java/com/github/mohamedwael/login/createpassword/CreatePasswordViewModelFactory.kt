@@ -6,7 +6,7 @@ import com.github.mohamedwael.login.config.InputValidationProvider
 
 object CreatePasswordViewModelFactory : BaseLoginViewModelFactory() {
 
-    lateinit var config: CreatePasswordConfig
+    private lateinit var config: CreatePasswordConfig
 
     fun inject(config: CreatePasswordConfig, inputValidationProvider: InputValidationProvider) {
         injectInputValidationProvider(inputValidationProvider)

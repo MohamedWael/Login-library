@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.github.mohamedwael.login.R
 import com.github.mohamedwael.login.base.BaseLoginFragment
 import com.github.mohamedwael.login.databinding.ForgetPasswordFragmentBinding
+import com.github.mohamedwael.login.verificationcodelogin.verification.KEY_USER_NAME
 
 class ForgetPasswordFragment : BaseLoginFragment() {
 
@@ -26,11 +28,11 @@ class ForgetPasswordFragment : BaseLoginFragment() {
         val binding = ForgetPasswordFragmentBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.onForgetPasswordClick = {
-            Navigation.findNavController(binding.root)
-                    //TODO The below ID should be deleted
-                .navigate(R.id.action_forgetPasswordFragment_to_createPasswordFragment)
-        }
+        viewModel.validUsername.observe(viewLifecycleOwner, Observer { username ->
+            Navigation.findNavController(binding.root).navigate(
+                R.id.action_forgetPasswordFragment_to_verificationLoginFragment,
+                Bundle().apply { putString(KEY_USER_NAME, username) })
+        })
         return binding.root
     }
 }
