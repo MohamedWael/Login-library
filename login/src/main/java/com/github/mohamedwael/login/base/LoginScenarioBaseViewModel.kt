@@ -2,7 +2,6 @@ package com.github.mohamedwael.login.base
 
 import android.view.View
 import androidx.databinding.ObservableInt
-import androidx.lifecycle.MutableLiveData
 import com.github.mohamedwael.login.config.InputValidationProvider
 import com.github.mohamedwael.login.forgetpassword.ForgetPasswordViewModelFactory
 import com.github.mohamedwael.login.signup.SignUpViewModelFactory

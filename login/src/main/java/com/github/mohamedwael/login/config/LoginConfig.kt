@@ -1,6 +1,5 @@
 package com.github.mohamedwael.login.config
 
-import com.github.mohamedwael.login.base.BaseLoginViewModelFactory
 import com.github.mohamedwael.login.createpassword.CreatePasswordConfig
 import com.github.mohamedwael.login.createpassword.CreatePasswordViewModelFactory
 import com.github.mohamedwael.login.forgetpassword.ForgetPasswordConfig
