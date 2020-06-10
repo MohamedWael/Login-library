@@ -1,5 +1,6 @@
 package com.github.mohamedwael.login.passwordlogin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,9 @@ open class PasswordLoginFragment : BaseLoginFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.onLoginSuccessLiveData.observe(viewLifecycleOwner, Observer {
+            activity?.sendBroadcast(Intent(BROADCAST_ACTION_LOGIN_SUCCESS).putExtras(it))
+        })
         bindNavigationActions(view)
     }
 
