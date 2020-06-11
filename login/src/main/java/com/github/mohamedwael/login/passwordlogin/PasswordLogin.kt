@@ -1,12 +1,13 @@
 package com.github.mohamedwael.login.passwordlogin
 
 import com.blogspot.mowael.baselibrary.contract.ErrorMessageHandler
+import java.io.Serializable
 
 interface PasswordLogin {
-    fun login(
+    fun <T : Serializable> login(
         username: String,
         password: String,
-        onSuccess: () -> Unit,
+        onSuccess: (response: T?) -> Unit,
         onError: (ErrorMessageHandler) -> Unit
     )
 }

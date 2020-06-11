@@ -17,4 +17,10 @@ abstract class LoginScenarioBaseViewModel(inputValidationProvider: InputValidati
     open var onForgetPasswordClick: (() -> Unit)? = null
 
     abstract fun onLoginClick()
+
+    override fun onCleared() {
+        super.onCleared()
+        onSignUpClick = null
+        onForgetPasswordClick = null
+    }
 }
