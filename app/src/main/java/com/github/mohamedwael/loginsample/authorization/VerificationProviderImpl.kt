@@ -7,7 +7,7 @@ import com.github.mohamedwael.login.verificationcodelogin.usernamevalidation.Ver
 class VerificationProviderImpl : VerificationProvider {
     override fun sendVerificationCode(
         userName: String,
-        onSuccess: () -> Unit,
+        onSuccess: (String) -> Unit,
         onError: (ErrorMessageHandler) -> Unit
     ) {
         fun isUsernameValid(username: String): Boolean {
@@ -16,7 +16,7 @@ class VerificationProviderImpl : VerificationProvider {
         }
         if (isUsernameValid(userName)) {
             Logger.d(userName)
-            onSuccess()
+            onSuccess("")
         } else {
             onError(object : ErrorMessageHandler {
                 override fun getMessage(): String = "invalid username"
