@@ -70,7 +70,7 @@ class LoginConfig private constructor(builder: Builder) {
             loginScenarios.add(loginScreen)
         }
 
-        fun addAllLoginScreen() = apply {
+        fun addAllLoginScreens() = apply {
             addLoginScreen(LoginScreen.PHONE_PASSWORD_SCREEN)
             addLoginScreen(LoginScreen.USERNAME_VALIDATION_SCREEN)
             addLoginScreen(LoginScreen.VERIFICATION_CODE_SCREEN)
@@ -80,26 +80,31 @@ class LoginConfig private constructor(builder: Builder) {
         }
 
         fun passwordLogin(passwordLogin: PasswordLogin) = apply {
+            addLoginScreen(LoginScreen.PHONE_PASSWORD_SCREEN)
             this.passwordLogin = passwordLogin
         }
 
         fun forgetPassword(forgetPasswordConfig: ForgetPasswordConfig) = apply {
+            addLoginScreen(LoginScreen.FORGET_PASSWORD_SCREEN)
             this.forgetPasswordConfig = forgetPasswordConfig
         }
 
         fun usernameValidation(verificationProvider: VerificationProvider) = apply {
+            addLoginScreen(LoginScreen.USERNAME_VALIDATION_SCREEN)
             this.verificationProvider = verificationProvider
         }
 
         fun createPassword(config: CreatePasswordConfig) = apply {
+            addLoginScreen(LoginScreen.CREATE_PASSWORD_SCREEN)
             this.createPasswordConfig = config
         }
 
         fun signUp() = apply {
-
+            addLoginScreen(LoginScreen.SIGN_UP_SCREEN)
         }
 
         fun verificationLogin(verificationConfig: VerificationConfig) = apply {
+            addLoginScreen(LoginScreen.VERIFICATION_CODE_SCREEN)
             this.verificationConfig = verificationConfig
         }
 
