@@ -9,7 +9,7 @@ class UsernameValidationViewModel(
     inputValidationProvider: InputValidationProvider
 ) : LoginScenarioBaseViewModel(inputValidationProvider) {
 
-    lateinit var onVerificationCodeSent: (username: String) -> Unit
+    lateinit var onVerificationCodeSent: (username: String, verificationCode: String) -> Unit
     override fun onLoginClick() {
         hideKeyboard()
         if (isUsernameValid()) {
@@ -22,9 +22,9 @@ class UsernameValidationViewModel(
 
     private fun sendVerificationCode() {
         showProgressDialog(true)
-        verificationProvider.sendVerificationCode(userName.value!!, {
+        verificationProvider.sendVerificationCode(userName.value!!, { verificationCode ->
             showProgressDialog(false)
-            onVerificationCodeSent(userName.value!!)
+            onVerificationCodeSent(userName.value!!, verificationCode)
         }, {
             showProgressDialog(false)
             showMessage(it)

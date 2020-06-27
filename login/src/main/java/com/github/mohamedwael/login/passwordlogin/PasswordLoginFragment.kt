@@ -32,6 +32,7 @@ open class PasswordLoginFragment : BaseLoginFragment() {
         val binding = PasswordLoginFragmentBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        observeHideKeyboardEvent(viewModel)
         return attachToRootView(binding.root)
     }
 

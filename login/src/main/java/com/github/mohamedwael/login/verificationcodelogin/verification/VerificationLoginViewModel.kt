@@ -14,6 +14,7 @@ import kotlin.math.absoluteValue
 
 const val TIMER_TICK_DOWN_INTERVAL = 1000L
 const val KEY_USER_NAME = "validated_username"
+const val KEY_VERIFICATION_ID = "validated_verificationId"
 class VerificationLoginViewModel(
     private val verificationConfig: VerificationConfig,
     inputValidationProvider: InputValidationProvider
@@ -32,9 +33,11 @@ class VerificationLoginViewModel(
         verificationConfig.onPinCodeChangeListener(username, it.toString())
     }
     var onSendClick: (() -> Unit)? = {
-        resendButtonVisibility.set(false)
-        verificationConfig.onSendClick?.invoke()
-        startTimer()
+        username?.also {
+            resendButtonVisibility.set(false)
+            verificationConfig.onSendClick?.invoke(it)
+            startTimer()
+        }
     }
     var onTimerClick: (() -> Unit)? = verificationConfig.onTimerClick
 

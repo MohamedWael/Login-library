@@ -9,6 +9,7 @@ import com.github.mohamedwael.login.R
 import com.github.mohamedwael.login.base.BaseLoginFragment
 import com.github.mohamedwael.login.databinding.UsernameValidationFragmentBinding
 import com.github.mohamedwael.login.verificationcodelogin.verification.KEY_USER_NAME
+import com.github.mohamedwael.login.verificationcodelogin.verification.KEY_VERIFICATION_ID
 
 open class UsernameValidationFragment : BaseLoginFragment() {
 
@@ -31,11 +32,12 @@ open class UsernameValidationFragment : BaseLoginFragment() {
         val binding = UsernameValidationFragmentBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.onVerificationCodeSent = { username ->
+        viewModel.onVerificationCodeSent = { username, verificationCode ->
             Navigation.findNavController(binding.root).navigate(
                 R.id.action_usernameValidationFragment_to_verificationLoginFragment,
                 Bundle().apply {
                     putString(KEY_USER_NAME, username)
+                    putString(KEY_VERIFICATION_ID, verificationCode)
                 })
         }
         return binding.root

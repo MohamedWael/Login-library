@@ -1,11 +1,13 @@
 package com.github.mohamedwael.login.passwordlogin
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import com.github.mohamedwael.login.R
 import com.github.mohamedwael.login.base.LoginScenarioBaseViewModel
+import com.github.mohamedwael.login.config.ActionSuccessReceiver
 import com.github.mohamedwael.login.config.BROADCAST_SUCCESS_ACTION_DATA
 import com.github.mohamedwael.login.config.InputValidationProvider
 import com.github.mohamedwael.login.verificationcodelogin.usernamevalidation.UsernameValidationViewModelFactory
@@ -39,13 +41,16 @@ open class PasswordLoginViewModel(
         if (isPasswordValid) {
             passwordError.value = null
             showProgressDialog(true)
-            passwordLogin.login<Serializable>(
+            passwordLogin.login(
                 userName.value!!,
                 password.value!!,
                 {
                     showProgressDialog(false)
                     onLoginSuccessLiveData.value = Bundle().apply {
-                        putSerializable(BROADCAST_SUCCESS_ACTION_DATA, it)
+                        when (it) {
+                            is Serializable -> putSerializable(BROADCAST_SUCCESS_ACTION_DATA, it)
+                            is Parcelable -> putParcelable(BROADCAST_SUCCESS_ACTION_DATA, it)
+                        }
                     }
                 }, {
                     showProgressDialog(false)
