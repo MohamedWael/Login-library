@@ -11,6 +11,7 @@
             android:id="@+id/tilUsername"
             style="@style/TextInputLayout"
             android:layout_marginTop="@dimen/password_login_margin_top"
+            app:errorText="@{viewModel.userNameError}"
             app:hintTextAppearance="@style/EditTextHintTextSize">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -20,7 +21,7 @@
                 android:hint="@string/user_name"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:text="@={viewModel.username}" />
+                android:text="@={viewModel.userName}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -28,6 +29,7 @@
             android:id="@+id/tilPassword"
             style="@style/PasswordTextInputLayout"
             android:layout_marginTop="@dimen/password_login_margin_top"
+            app:errorText="@{viewModel.passwordError}"
             app:hintTextAppearance="@style/EditTextHintTextSize">
 
             <com.google.android.material.textfield.TextInputEditText

@@ -7,9 +7,7 @@ import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import com.github.mohamedwael.login.R
 import com.github.mohamedwael.login.base.LoginScenarioBaseViewModel
-import com.github.mohamedwael.login.config.ActionSuccessReceiver
-import com.github.mohamedwael.login.config.BROADCAST_SUCCESS_ACTION_DATA
-import com.github.mohamedwael.login.config.InputValidationProvider
+import com.github.mohamedwael.login.config.*
 import com.github.mohamedwael.login.verificationcodelogin.usernamevalidation.UsernameValidationViewModelFactory
 import java.io.Serializable
 
@@ -47,6 +45,7 @@ open class PasswordLoginViewModel(
                 {
                     showProgressDialog(false)
                     onLoginSuccessLiveData.value = Bundle().apply {
+                        putString(BROADCAST_ACTION_TYPE, BROADCAST_ACTION_TYPE_LOGIN)
                         when (it) {
                             is Serializable -> putSerializable(BROADCAST_SUCCESS_ACTION_DATA, it)
                             is Parcelable -> putParcelable(BROADCAST_SUCCESS_ACTION_DATA, it)

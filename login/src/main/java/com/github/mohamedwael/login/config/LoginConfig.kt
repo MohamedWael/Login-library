@@ -6,6 +6,7 @@ import com.github.mohamedwael.login.forgetpassword.ForgetPasswordConfig
 import com.github.mohamedwael.login.forgetpassword.ForgetPasswordViewModelFactory
 import com.github.mohamedwael.login.passwordlogin.PasswordLogin
 import com.github.mohamedwael.login.passwordlogin.PasswordLoginViewModelFactory
+import com.github.mohamedwael.login.signup.SignUp
 import com.github.mohamedwael.login.signup.SignUpViewModelFactory
 import com.github.mohamedwael.login.verificationcodelogin.usernamevalidation.UsernameValidationViewModelFactory
 import com.github.mohamedwael.login.verificationcodelogin.usernamevalidation.VerificationProvider
@@ -49,8 +50,8 @@ class LoginConfig private constructor(builder: Builder) {
         CreatePasswordViewModelFactory.inject(config, inputValidationProvider)
     }
 
-    fun initSignUp() {
-        SignUpViewModelFactory.injectInputValidationProvider(inputValidationProvider)
+    fun initSignUp(signUp: SignUp) {
+        SignUpViewModelFactory.init(signUp, inputValidationProvider)
     }
 
     fun initVerificationLogin(verificationConfig: VerificationConfig) {
@@ -65,6 +66,7 @@ class LoginConfig private constructor(builder: Builder) {
         private var verificationProvider: VerificationProvider? = null
         private var createPasswordConfig: CreatePasswordConfig? = null
         private var verificationConfig: VerificationConfig? = null
+        private var signUp: SignUp? = null
 
         fun addLoginScreen(loginScreen: LoginScreen) = apply {
             loginScenarios.add(loginScreen)
@@ -99,8 +101,9 @@ class LoginConfig private constructor(builder: Builder) {
             this.createPasswordConfig = config
         }
 
-        fun signUp() = apply {
+        fun signUp(signUp: SignUp) = apply {
             addLoginScreen(LoginScreen.SIGN_UP_SCREEN)
+            this.signUp = signUp
         }
 
         fun verificationLogin(verificationConfig: VerificationConfig) = apply {
@@ -123,8 +126,7 @@ class LoginConfig private constructor(builder: Builder) {
                         loginConfig.initUsernameValidation(checkNotNull(verificationProvider) { "To initialize username validation, you must provide the verificationProvider" })
                     }
                     SignUpViewModelFactory -> {
-//                        { "To initialize sign up , you must provide the verificationProvider" }
-                        loginConfig.initSignUp()
+                        loginConfig.initSignUp(checkNotNull(signUp) { "To initialize sign up , you must provide the SignUp implementation" })
                     }
                     CreatePasswordViewModelFactory -> {
                         loginConfig.initCreatePassword(checkNotNull(createPasswordConfig) { "To initialize create password, you must provide the createPasswordConfig" })
