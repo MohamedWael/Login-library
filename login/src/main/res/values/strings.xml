@@ -19,4 +19,5 @@
     <string name="send">Send</string>
     <string name="password_doesnt_match">Password doesn\'t match</string>
     <string name="forget_password_send">Send</string>
+    <string name="by_signing_up_you_agree_to_our_terms_of_service">By signing up you agree to our T &amp; C</string>
 </resources>

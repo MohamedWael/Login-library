@@ -43,6 +43,7 @@
 
     <style name="LoginInputField" parent="LoginBaseTextInput">
         <item name="android:textColor">@color/mainTextColor</item>
+        <item name="android:drawablePadding">@dimen/login_drawable_padding</item>
     </style>
 
     <style name="PasswordLoginInputField" parent="LoginInputField">

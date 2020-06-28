@@ -16,6 +16,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsername"
                 style="@style/LoginInputField"
+                android:drawableStart="@drawable/ic_person"
                 android:hint="@string/user_name"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
@@ -33,12 +34,21 @@
                 android:id="@+id/etPassword"
                 style="@style/PasswordLoginInputField"
                 android:autofillHints="password"
+                android:drawableStart="@drawable/ic_lock"
                 android:hint="@string/password"
                 android:imeOptions="actionNext"
                 android:text="@={viewModel.password}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            style="@style/PasswordTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:autoLink="web"
+            android:onClick="@{(v)-> viewModel.onTermsClick()}"
+            android:text="@string/by_signing_up_you_agree_to_our_terms_of_service" />
 
         <Button
             android:id="@+id/btnSignUp"

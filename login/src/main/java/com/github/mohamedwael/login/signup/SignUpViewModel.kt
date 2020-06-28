@@ -9,5 +9,6 @@ open class SignUpViewModel (inputValidationProvider: InputValidationProvider) : 
     val username = MutableLiveData<String>()
     val password = MutableLiveData<String>()
 
+    fun onTermsClick() {}
     fun onSignUpClick() {}
 }
