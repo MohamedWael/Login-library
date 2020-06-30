@@ -59,6 +59,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">@dimen/login_layout_margin</item>
+        <item name="android:background">@color/layoutBackgroundColor</item>
     </style>
 
     <style name="TitleTextLarge">

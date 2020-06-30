@@ -4,11 +4,11 @@ import com.blogspot.mowael.baselibrary.contract.ErrorMessageHandler
 
 interface SignUp {
     fun signUp(
-        username: String,
-        password: String,
+        user:SigningUpUser,
         onSuccess: (response: Any?) -> Unit,
         onError: (ErrorMessageHandler) -> Unit
     )
 
-    fun onTermsClick()
+    fun onTermsAndConditionsClick()
+    fun onPrivacyPolicyClick()
 }

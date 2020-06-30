@@ -3,6 +3,7 @@
 	<color name="mainActionColor">#6200EE</color>
 	<color name="secondaryActionColor">#3700B3</color>
 	<color name="mainBackgroundColor">@color/white</color>
+	<color name="layoutBackgroundColor">@color/white</color>
 	<color name="mainTextColor">#4A1717</color>
 	<color name="hintTextColor">#AEABAB</color>
 	<color name="white">#FFFFFF</color>

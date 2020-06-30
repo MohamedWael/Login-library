@@ -2,6 +2,7 @@ package com.github.mohamedwael.login.signup
 
 import android.os.Bundle
 import android.os.Parcelable
+import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import com.github.mohamedwael.login.R
 import com.github.mohamedwael.login.base.UsernameBaseViewModel
@@ -23,50 +24,84 @@ open class SignUpViewModel(
     val firstNameError = MutableLiveData<Int?>()
     val lastName = MutableLiveData<String>()
     val lastNameError = MutableLiveData<Int?>()
-    val phone = MutableLiveData<String>()
-    val phoneError = MutableLiveData<Int?>()
 
     var onSignUpSuccessLiveData = MutableLiveData<Bundle>()
 
 
-    fun onTermsClick() {
-        signUp.onTermsClick()
+    fun onTermsAndConditionsClick() {
+        signUp.onTermsAndConditionsClick()
+    }
+
+    fun onPrivacyPolicyClick() {
+        signUp.onPrivacyPolicyClick()
     }
 
     fun onSignUpClick() {
         hideKeyboard()
-        if (isUsernameValid()) {
-            userNameError.value = null
+        if (!isValidName()) return
+
+        userNameError.value = if (isUsernameValid()) {
             validatePassword()
+            null
         } else {
-            userNameError.value = R.string.username_not_valid
+            R.string.username_not_valid
         }
+
+
+    }
+
+
+    private fun isValidName(): Boolean {
+        var validName: Boolean
+        fun isInvalidName(name: String?) = TextUtils.isEmpty(name)
+        firstNameError.value = if (isInvalidName(firstName.value)) {
+            validName = false
+            R.string.first_name_required
+        } else {
+            validName = true
+            null
+        }
+
+        lastNameError.value = if (isInvalidName(lastName.value)) {
+            validName = false
+            R.string.last_name_required
+        } else {
+            validName = true
+            null
+        }
+        return validName
     }
 
     private fun validatePassword() {
         val isPasswordValid = inputValidationProvider.isPasswordValid(password.value)
-        if (isPasswordValid) {
-            passwordError.value = null
-            showProgressDialog(true)
-            signUp.signUp(
-                userName.value!!,
-                password.value!!,
-                {
-                    showProgressDialog(false)
-                    onSignUpSuccessLiveData.value = Bundle().apply {
-                        putString(BROADCAST_ACTION_TYPE, BROADCAST_ACTION_TYPE_SIGN_UP)
-                        when (it) {
-                            is Serializable -> putSerializable(BROADCAST_SUCCESS_ACTION_DATA, it)
-                            is Parcelable -> putParcelable(BROADCAST_SUCCESS_ACTION_DATA, it)
-                        }
-                    }
-                }, {
-                    showProgressDialog(false)
-                    showMessage(it)
-                })
+        passwordError.value = if (isPasswordValid) {
+            signUp()
+            null
         } else {
-            passwordError.value = R.string.password_not_valid
+            R.string.password_not_valid
         }
+    }
+
+    private fun signUp() {
+        showProgressDialog(true)
+        signUp.signUp(SigningUpUser(
+            firstName.value!!,
+            lastName.value!!,
+            userName.value!!,
+            password.value!!
+        ), {
+            showProgressDialog(false)
+            onSignUpSuccessLiveData.value = Bundle().apply {
+                putString(BROADCAST_ACTION_TYPE, BROADCAST_ACTION_TYPE_SIGN_UP)
+                when (it) {
+                    is Serializable -> putSerializable(BROADCAST_SUCCESS_ACTION_DATA, it)
+                    is Parcelable -> putParcelable(BROADCAST_SUCCESS_ACTION_DATA, it)
+                }
+            }
+        }, {
+            showProgressDialog(false)
+            showMessage(it)
+        })
     }
 
 }

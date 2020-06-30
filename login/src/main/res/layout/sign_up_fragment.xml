@@ -112,7 +112,7 @@
                 android:layout_marginTop="20dp"
                 android:autoLink="web"
                 android:gravity="center"
-                android:onClick="@{(v)-> viewModel.onTermsClick()}"
+                android:onClick="@{(v)-> viewModel.onTermsAndConditionsClick()}"
                 android:text="@string/by_signing_up_you_agree_to_our_terms_of_service"
                 android:textSize="12sp" />
 

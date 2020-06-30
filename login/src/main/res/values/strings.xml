@@ -19,7 +19,7 @@
     <string name="send">Send</string>
     <string name="password_doesnt_match">Password doesn\'t match</string>
     <string name="forget_password_send">Send</string>
-    <string name="by_signing_up_you_agree_to_our_terms_of_service">By continuing you agree to\nto our terms and conditions and privacy policy</string>
+    <string name="by_signing_up_you_agree_to_our_terms_of_service">By continuing you agree to\n our terms and conditions and privacy policy</string>
     <string name="phone">Phone</string>
     <string name="email">Email</string>
     <string name="email_or_phone">Email or phone</string>
@@ -29,4 +29,6 @@
     <string name="welcome_back">Welcome\nback</string>
     <string name="sign_in_to_continue">Sign in to continue</string>
     <string name="create_your_password">Create\nyour password</string>
+    <string name="first_name_required">First name required</string>
+    <string name="last_name_required">Last name required</string>
 </resources>
