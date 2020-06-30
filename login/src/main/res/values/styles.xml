@@ -66,6 +66,22 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/login_title_text_size</item>
+        <item name="android:layout_marginStart">@dimen/login_view_side_margin</item>
+        <item name="android:layout_marginEnd">@dimen/login_view_side_margin</item>
     </style>
 
+    <style name="MainTitleText" parent="TitleTextLarge">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleTextMini" parent="TitleTextLarge">
+        <item name="android:layout_marginEnd">@dimen/login_view_side_margin</item>
+        <item name="android:textSize">@dimen/login_input_field_hint_text_size</item>
+    </style>
+    <style name="TitleTextMiniSecondary" parent="TitleTextLarge">
+        <item name="android:textColor">@color/hintTextColor</item>
+        <item name="android:layout_marginEnd">@dimen/login_view_side_margin</item>
+        <item name="android:textSize">@dimen/login_input_field_hint_text_size</item>
+    </style>
 </resources>

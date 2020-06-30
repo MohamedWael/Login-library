@@ -10,8 +10,8 @@
     <string name="username_not_valid">Username is not valid</string>
     <string name="password_not_valid">Password is not valid</string>
     <string name="resend">Resend</string>
-    <string name="verification_title">Verification</string>
-    <string name="verification_description">Please enter the code to verify the account</string>
+    <string name="verification_title">Verify</string>
+    <string name="verification_description">We have sent an OTP to you</string>
     <string name="forget_password_description">Please enter username or email</string>
     <string name="remaining_time">Remaining 00:</string>
     <string name="enter_new_password">Enter a new password</string>
@@ -19,5 +19,14 @@
     <string name="send">Send</string>
     <string name="password_doesnt_match">Password doesn\'t match</string>
     <string name="forget_password_send">Send</string>
-    <string name="by_signing_up_you_agree_to_our_terms_of_service">By signing up you agree to our T &amp; C</string>
+    <string name="by_signing_up_you_agree_to_our_terms_of_service">By continuing you agree to\nto our terms and conditions and privacy policy</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="email_or_phone">Email or phone</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="create_an_account">Create an\naccount</string>
+    <string name="welcome_back">Welcome\nback</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="create_your_password">Create\nyour password</string>
 </resources>
