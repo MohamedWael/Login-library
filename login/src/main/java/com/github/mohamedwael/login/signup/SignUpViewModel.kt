@@ -14,17 +14,25 @@ import java.io.Serializable
 open class SignUpViewModel(
     private val signUp: SignUp,
     inputValidationProvider: InputValidationProvider
-) :
-    UsernameBaseViewModel(inputValidationProvider) {
+) : UsernameBaseViewModel(inputValidationProvider) {
 
     val password = MutableLiveData<String>()
     val passwordError = MutableLiveData<Int?>()
+
+    val firstName = MutableLiveData<String>()
+    val firstNameError = MutableLiveData<Int?>()
+    val lastName = MutableLiveData<String>()
+    val lastNameError = MutableLiveData<Int?>()
+    val phone = MutableLiveData<String>()
+    val phoneError = MutableLiveData<Int?>()
+
     var onSignUpSuccessLiveData = MutableLiveData<Bundle>()
 
 
     fun onTermsClick() {
         signUp.onTermsClick()
     }
+
     fun onSignUpClick() {
         hideKeyboard()
         if (isUsernameValid()) {
