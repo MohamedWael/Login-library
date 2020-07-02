@@ -56,8 +56,9 @@
             android:layout_marginTop="10dp"
             android:onClick="@{(v)-> viewModel.onForgetPasswordClick.invoke()}"
             android:padding="@dimen/forget_password_button_padding"
-            android:text="@string/forget_password"
-            android:visibility="@{viewModel.forgetPasswordButtonVisibility}" />
+            android:visibility="@{viewModel.forgetPasswordButtonVisibility}"
+            app:textUnderline="@{@string/forget_password}"
+            tools:text="@string/forget_password" />
 
 
         <Button
