@@ -4,7 +4,7 @@ import androidx.core.util.PatternsCompat
 
 interface InputValidationProvider {
 
-    fun isUsernameValid(phone: String?): Boolean
+    fun isUsernameValid(username: String?): Boolean
 
     fun isPasswordValid(password: String?): Boolean
 

@@ -43,6 +43,7 @@
 
     <style name="LoginInputField" parent="LoginBaseTextInput">
         <item name="android:textColor">@color/mainTextColor</item>
+        <item name="android:drawablePadding">@dimen/login_drawable_padding</item>
     </style>
 
     <style name="PasswordLoginInputField" parent="LoginInputField">
@@ -58,6 +59,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">@dimen/login_layout_margin</item>
+        <item name="android:background">@color/layoutBackgroundColor</item>
     </style>
 
     <style name="TitleTextLarge">
@@ -65,6 +67,22 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/login_title_text_size</item>
+        <item name="android:layout_marginStart">@dimen/login_view_side_margin</item>
+        <item name="android:layout_marginEnd">@dimen/login_view_side_margin</item>
     </style>
 
+    <style name="MainTitleText" parent="TitleTextLarge">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleTextMini" parent="TitleTextLarge">
+        <item name="android:layout_marginEnd">@dimen/login_view_side_margin</item>
+        <item name="android:textSize">@dimen/login_input_field_hint_text_size</item>
+    </style>
+    <style name="TitleTextMiniSecondary" parent="TitleTextLarge">
+        <item name="android:textColor">@color/hintTextColor</item>
+        <item name="android:layout_marginEnd">@dimen/login_view_side_margin</item>
+        <item name="android:textSize">@dimen/login_input_field_hint_text_size</item>
+    </style>
 </resources>

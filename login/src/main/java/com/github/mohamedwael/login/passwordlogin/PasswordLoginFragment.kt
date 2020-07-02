@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.github.mohamedwael.login.R
 import com.github.mohamedwael.login.base.BaseLoginFragment
-import com.github.mohamedwael.login.config.BROADCAST_ACTION_ACTION_SUCCESS
+import com.github.mohamedwael.login.config.BROADCAST_ACTION_SUCCESS
 import com.github.mohamedwael.login.databinding.PasswordLoginFragmentBinding
 
 
@@ -32,13 +32,14 @@ open class PasswordLoginFragment : BaseLoginFragment() {
         val binding = PasswordLoginFragmentBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        observeHideKeyboardEvent(viewModel)
         return attachToRootView(binding.root)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.onLoginSuccessLiveData.observe(viewLifecycleOwner, Observer {
-            activity?.sendBroadcast(Intent(BROADCAST_ACTION_ACTION_SUCCESS).putExtras(it))
+            activity?.sendBroadcast(Intent(BROADCAST_ACTION_SUCCESS).putExtras(it))
         })
         bindNavigationActions(view)
     }

@@ -14,4 +14,5 @@
     <dimen name="forget_password_button_padding">10dp</dimen>
     <dimen name="create_password_margin_top">20dp</dimen>
     <dimen name="title_text_size">25sp</dimen>
+    <dimen name="login_drawable_padding">8dp</dimen>
 </resources>

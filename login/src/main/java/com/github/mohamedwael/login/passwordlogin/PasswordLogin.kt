@@ -4,10 +4,10 @@ import com.blogspot.mowael.baselibrary.contract.ErrorMessageHandler
 import java.io.Serializable
 
 interface PasswordLogin {
-    fun <T : Serializable> login(
+    fun login(
         username: String,
         password: String,
-        onSuccess: (response: T?) -> Unit,
+        onSuccess: (response: Any?) -> Unit,
         onError: (ErrorMessageHandler) -> Unit
     )
 }

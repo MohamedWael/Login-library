@@ -1,9 +1,29 @@
 package com.github.mohamedwael.login.base
 
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputLayout
 
 object LoginBindingAdapter {
+
+    @JvmStatic
+    @BindingAdapter("app:textUnderline")
+    fun textUnderline(textView: TextView, strRes: Int) {
+        val content = SpannableString(textView.context.getString(strRes))
+        content.setSpan(UnderlineSpan(), 0, content.length, 0)
+        textView.text = textView.context.getString(strRes)
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:textUnderline")
+    fun textUnderline(textView: TextView, text: String) {
+        val underlineSpan = SpannableString(text)
+        underlineSpan.setSpan(UnderlineSpan(), 0, underlineSpan.length, 0)
+        textView.text = underlineSpan
+    }
+
     @JvmStatic
     @BindingAdapter("app:errorText")
     fun setErrorMessage(view: TextInputLayout, errorMessage: String?) {

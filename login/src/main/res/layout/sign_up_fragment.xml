@@ -7,19 +7,71 @@
         android:orientation="vertical"
         tools:context=".signup.SignUpFragment">
 
+
+        <TextView
+            android:id="@+id/tvSMSVVerificationTitle"
+            style="@style/MainTitleText"
+            android:layout_marginTop="@dimen/verification_title_margin_top"
+            android:text="@string/create_an_account" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFirstName"
+                style="@style/TextInputLayout"
+                android:layout_marginTop="@dimen/password_login_margin_top"
+                android:layout_weight="1"
+                app:errorText="@{viewModel.firstNameError}"
+                app:hintTextAppearance="@style/EditTextHintTextSize">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFirstName"
+                    style="@style/LoginInputField"
+                    android:hint="@string/first_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="textAutoComplete"
+                    android:text="@={viewModel.firstName}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLastName"
+                style="@style/TextInputLayout"
+                android:layout_marginTop="@dimen/password_login_margin_top"
+                android:layout_weight="1"
+                app:errorText="@{viewModel.lastNameError}"
+                app:hintTextAppearance="@style/EditTextHintTextSize">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLastName"
+                    style="@style/LoginInputField"
+                    android:hint="@string/last_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="textAutoComplete"
+                    android:text="@={viewModel.lastName}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilUsername"
             style="@style/TextInputLayout"
             android:layout_marginTop="@dimen/password_login_margin_top"
+            app:errorText="@{viewModel.userNameError}"
             app:hintTextAppearance="@style/EditTextHintTextSize">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsername"
                 style="@style/LoginInputField"
-                android:hint="@string/user_name"
+                android:drawableStart="@drawable/ic_email"
+                android:hint="@string/email_or_phone"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:text="@={viewModel.username}" />
+                android:text="@={viewModel.userName}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -27,25 +79,44 @@
             android:id="@+id/tilPassword"
             style="@style/PasswordTextInputLayout"
             android:layout_marginTop="@dimen/password_login_margin_top"
+            app:errorText="@{viewModel.passwordError}"
             app:hintTextAppearance="@style/EditTextHintTextSize">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 style="@style/PasswordLoginInputField"
                 android:autofillHints="password"
+                android:drawableStart="@drawable/ic_lock"
                 android:hint="@string/password"
                 android:imeOptions="actionNext"
                 android:text="@={viewModel.password}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <Button
-            android:id="@+id/btnSignUp"
-            style="@style/LoginButton"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:onClick="@{(v)-> viewModel.onSignUpClick()}"
-            android:text="@string/sign_up" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnSignUp"
+                style="@style/LoginButton"
+                android:onClick="@{(v)-> viewModel.onSignUpClick()}"
+                android:text="@string/sign_up" />
+
+            <TextView
+                style="@style/PasswordTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:autoLink="web"
+                android:gravity="center"
+                android:onClick="@{(v)-> viewModel.onTermsAndConditionsClick()}"
+                android:text="@string/by_signing_up_you_agree_to_our_terms_of_service"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
