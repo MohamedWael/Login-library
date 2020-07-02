@@ -1,0 +1,20 @@
+version: 2.1
+
+orbs:
+  android: circleci/android@0.2.0
+
+jobs:
+  build:
+    executor: android/android
+
+    steps:
+      - checkout
+      - run:
+          name: Build debug APK and release APK
+          command: |
+            chmod +x gradlew
+            ./gradlew build
+            ./gradlew :app:assembleDebug
+            ./gradlew :loginLibrary:build
+            ./gradlew :loginLibrary:testDebugUnitTest
+            ./gradlew :loginLibrary:install
