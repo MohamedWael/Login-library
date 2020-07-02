@@ -16,4 +16,5 @@ jobs:
             ./gradlew build
             ./gradlew :app:assembleDebug
             ./gradlew :loginLibrary:build
+            ./gradlew :loginLibrary:testDebugUnitTest
             ./gradlew :loginLibrary:install
