@@ -1,6 +1,7 @@
 package com.github.mohamedwael.loginsample
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.blogspot.mowael.utilslibrary.Logger
@@ -10,6 +11,7 @@ import com.github.mohamedwael.login.forgetpassword.ForgetPasswordConfig
 import com.github.mohamedwael.login.verificationcodelogin.verification.VerificationConfig
 import com.github.mohamedwael.loginsample.authorization.AppInputValidationProvider
 import com.github.mohamedwael.loginsample.authorization.PasswordLoginImpl
+import com.github.mohamedwael.loginsample.authorization.SignUpImpl
 import com.github.mohamedwael.loginsample.authorization.VerificationProviderImpl
 
 class MainActivity : AppCompatActivity() {
@@ -47,12 +49,15 @@ class MainActivity : AppCompatActivity() {
             })
 
         LoginConfig.Builder(AppInputValidationProvider())
-            .addAllLoginScreen()
             .usernameValidation(VerificationProviderImpl())
             .createPassword(createPasswordConfig)
             .verificationLogin(verificationConfig)
             .forgetPassword(ForgetPasswordConfig { Logger.d("forget password username: $it") })
-            .signUp()
+            .signUp(SignUpImpl({
+                Toast.makeText(this, "onTermsAndConditionsClick", Toast.LENGTH_SHORT).show()
+            }, {
+                Toast.makeText(this, "onPrivacyPolicyClick", Toast.LENGTH_SHORT).show()
+            }))
             .passwordLogin(PasswordLoginImpl())
             .build()
     }

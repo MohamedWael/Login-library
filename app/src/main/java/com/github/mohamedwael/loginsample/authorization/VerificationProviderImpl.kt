@@ -4,6 +4,8 @@ import com.blogspot.mowael.baselibrary.contract.ErrorMessageHandler
 import com.blogspot.mowael.utilslibrary.Logger
 import com.github.mohamedwael.login.verificationcodelogin.usernamevalidation.VerificationProvider
 
+const val INVALID_USER_NAME = "01063603530"
+
 class VerificationProviderImpl : VerificationProvider {
     override fun sendVerificationCode(
         userName: String,
@@ -11,7 +13,7 @@ class VerificationProviderImpl : VerificationProvider {
         onError: (ErrorMessageHandler) -> Unit
     ) {
         fun isUsernameValid(username: String): Boolean {
-            if (username == "01063603530") return false
+            if (username == INVALID_USER_NAME) return false
             return true
         }
         if (isUsernameValid(userName)) {

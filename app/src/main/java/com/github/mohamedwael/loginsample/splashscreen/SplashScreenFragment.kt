@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.github.mohamedwael.loginsample.R
@@ -30,12 +31,14 @@ class SplashScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler().postDelayed({
-            Navigation.findNavController(view)
-//                .navigate(R.id.action_splashScreenFragment_to_code_login_nav_graph)
-                .navigate(R.id.action_splashScreenFragment_to_password_login_nav_graph)
-        }, 3000)
+        viewModel = ViewModelProvider(this).get(SplashScreenViewModel::class.java)
+        viewModel.navigateNext.observe(viewLifecycleOwner, Observer {
+            if (it) Navigation.findNavController(view).navigate(
+//                R.id.action_splashScreenFragment_to_code_login_nav_graph
+                R.id.action_splashScreenFragment_to_password_login_nav_graph
+            )
+        })
+        viewModel.startNavigation()
     }
-
 
 }
