@@ -1,3 +1,2 @@
-include ':login'
+include ':loginLibrary'
 include ':app'
-rootProject.name = "Login project"
