@@ -5,6 +5,7 @@ import android.os.Parcelable
 import android.view.View
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
+import com.blogspot.mowael.utilslibrary.utils.SingleLiveDataEvent
 import com.github.mohamedwael.login.R
 import com.github.mohamedwael.login.base.LoginScenarioBaseViewModel
 import com.github.mohamedwael.login.config.*
@@ -22,7 +23,7 @@ open class PasswordLoginViewModel(
     val verificationLoginButtonVisibility =
         ObservableInt(if (UsernameValidationViewModelFactory.isInitialized()) View.VISIBLE else View.GONE)
     var onVerificationLoginClick: (() -> Unit)? = null
-    var onLoginSuccessLiveData = MutableLiveData<Bundle>()
+    var onLoginSuccessLiveData = MutableLiveData<SingleLiveDataEvent<Bundle>>()
 
     override fun onLoginClick() {
         hideKeyboard()
@@ -44,13 +45,13 @@ open class PasswordLoginViewModel(
                 password.value!!,
                 {
                     showProgressDialog(false)
-                    onLoginSuccessLiveData.value = Bundle().apply {
+                    onLoginSuccessLiveData.value = SingleLiveDataEvent(Bundle().apply {
                         putString(BROADCAST_ACTION_TYPE, BROADCAST_ACTION_TYPE_LOGIN)
                         when (it) {
                             is Serializable -> putSerializable(BROADCAST_SUCCESS_ACTION_DATA, it)
                             is Parcelable -> putParcelable(BROADCAST_SUCCESS_ACTION_DATA, it)
                         }
-                    }
+                    })
                 }, {
                     showProgressDialog(false)
                     showMessage(it)

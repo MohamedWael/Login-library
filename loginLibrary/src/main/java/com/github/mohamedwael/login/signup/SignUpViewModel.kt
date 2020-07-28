@@ -36,7 +36,7 @@ open class SignUpViewModel(
         signUp.onPrivacyPolicyClick()
     }
 
-    fun onSignUpClick() {
+    open fun onSignUpClick() {
         hideKeyboard()
         if (!isValidName()) return
 

@@ -39,7 +39,10 @@ open class PasswordLoginFragment : BaseLoginFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.onLoginSuccessLiveData.observe(viewLifecycleOwner, Observer {
-            activity?.sendBroadcast(Intent(BROADCAST_ACTION_SUCCESS).putExtras(it))
+            val bundle = it.getContentIfNotHandled()
+            bundle?.also {
+                activity?.sendBroadcast(Intent(BROADCAST_ACTION_SUCCESS).putExtras(bundle))
+            }
         })
         bindNavigationActions(view)
     }
