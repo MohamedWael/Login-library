@@ -26,7 +26,7 @@ open class SignUpViewModel(
     val lastNameError = MutableLiveData<Int?>()
 
     var onSignUpSuccessLiveData = MutableLiveData<Bundle>()
-
+    val isDataValid = mutableListOf<Boolean>()
 
     fun onTermsAndConditionsClick() {
         signUp.onTermsAndConditionsClick()
@@ -38,58 +38,58 @@ open class SignUpViewModel(
 
     open fun onSignUpClick() {
         hideKeyboard()
-        if (!isValidName()) return
 
-        userNameError.value = if (isUsernameValid()) {
-            validatePassword()
-            null
-        } else {
-            R.string.username_not_valid
-        }
-
-
-    }
-
-
-    private fun isValidName(): Boolean {
-        var validName: Boolean
         fun isInvalidName(name: String?) = TextUtils.isEmpty(name)
         firstNameError.value = if (isInvalidName(firstName.value)) {
-            validName = false
+            isDataValid.add(0, false)
             R.string.first_name_required
         } else {
-            validName = true
+            isDataValid.add(0, true)
             null
         }
 
         lastNameError.value = if (isInvalidName(lastName.value)) {
-            validName = false
+            isDataValid.add(1, false)
             R.string.last_name_required
         } else {
-            validName = true
+            isDataValid.add(1, true)
             null
         }
-        return validName
-    }
 
-    private fun validatePassword() {
-        val isPasswordValid = inputValidationProvider.isPasswordValid(password.value)
-        passwordError.value = if (isPasswordValid) {
-            signUp()
+        userNameError.value = if (isUsernameValid()) {
+            isDataValid.add(2, false)
             null
         } else {
+            isDataValid.add(2, true)
+            R.string.username_not_valid
+        }
+        val isPasswordValid = inputValidationProvider.isPasswordValid(password.value)
+        passwordError.value = if (isPasswordValid) {
+            isDataValid.add(3, false)
+
+            null
+        } else {
+            isDataValid.add(3, true)
             R.string.password_not_valid
         }
+
+        val signingUpUser = SigningUpUser(
+            firstName.value ?: "",
+            lastName.value ?: "",
+            userName.value ?: "",
+            password.value ?: "",
+            mutableMapOf()
+        )
+
+        if (isDataValid.any { !it } && !onSignUpDataPrepared(signingUpUser)) {
+            signUp(signingUpUser)
+        }
+
     }
 
-    private fun signUp() {
+    open fun signUp(signingUpUser: SigningUpUser) {
         showProgressDialog(true)
-        signUp.signUp(SigningUpUser(
-            firstName.value!!,
-            lastName.value!!,
-            userName.value!!,
-            password.value!!
-        ), {
+        signUp.signUp(signingUpUser, {
             showProgressDialog(false)
             onSignUpSuccessLiveData.value = Bundle().apply {
                 putString(BROADCAST_ACTION_TYPE, BROADCAST_ACTION_TYPE_SIGN_UP)
@@ -103,5 +103,10 @@ open class SignUpViewModel(
             showMessage(it)
         })
     }
+
+    /**
+     * Used to append extra data to the sign up data object using the extra data map
+     */
+    open fun onSignUpDataPrepared(signUp: SigningUpUser): Boolean = true
 
 }

@@ -4,5 +4,6 @@ data class SigningUpUser(
     val firstName: String,
     val lastName: String,
     val username: String,
-    val password: String
+    val password: String,
+    val extraData: MutableMap<String, String>
 )
