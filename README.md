@@ -27,6 +27,6 @@ this project is still under development
 <pre>
 dependencies {
     ...
-    <b>implementation 'com.github.MohamedWael:Login-library:develop-SNAPSHOT'</b>
+    <b>implementation 'com.github.MohamedWael:Login-library:1.0.0'</b>
 }
 </pre>
